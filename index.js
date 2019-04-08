@@ -17,6 +17,7 @@ function getLocalVer() {
             localVer = ver;
             resolve(ver);
         }).on('error',  (err)=> {
+			localVer = "";
             reject(err);
             console.error(err);
         })
@@ -47,8 +48,8 @@ function compareResults() {
             console.log("ElvUI is up-to-date.")
             resolve(0)
         } else {
-            console.log("Detects local version of "+localVer)
-            console.log("Detects server version of "+serverVer)
+            console.log("Local version: "+localVer)
+            console.log("Server version: "+serverVer)
             console.log("ElvUI is out of date.")
             console.log("ElvUI is updating...")
             dl("direct:https://git.tukui.org/elvui/elvui/-/archive/master/elvui-master.zip","./temp", (err)=>{
