@@ -6,7 +6,7 @@ const { COPYFILE_EXCL } = fs.constants;
 
 function getLocalVer() {
     return new Promise((resolve, reject)=>{
-        var path = "C:/WoW/_retail_/Interface/addons/ElvUI/ElvUI.toc"
+        var path = "B:/WoW/_retail_/Interface/addons/ElvUI/ElvUI.toc"
         var rs = fs.createReadStream(path, {encoding: 'utf8'});
 		
         rs.on('data', (data)=> {
@@ -65,7 +65,7 @@ function compareResults() {
 
 function copyRepo(){
     var src= "./temp";
-    var dest= "C:/WoW/_retail_/Interface/addons/";
+    var dest= "B:/WoW/_retail_/Interface/addons/";
     copydir(src, dest, (err)=>{
       if (err){
         console.log("There was a problem with the request.")
