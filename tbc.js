@@ -2,13 +2,17 @@ var curl = require("curlrequest");
 var dl = require("download-git-repo");
 var fs = require("fs");
 var copydir = require("copy-dir");
-const { COPYFILE_EXCL } = fs.constants;
+const {
+	COPYFILE_EXCL
+} = fs.constants;
 
 function getLocalVer() {
 	return new Promise((resolve, reject) => {
 		//var path = "C:/WoW/_retail_/Interface/addons/ElvUI/ElvUI.toc";
-		var path = "M:/WoW/_classic_/Interface/AddOns/ElvUI/ElvUI.toc";
-		var rs = fs.createReadStream(path, { encoding: "utf8" });
+		var path = "M:/WoW/_classic_/Interface/AddOns/ElvUI/ElvUI-BCC.toc";
+		var rs = fs.createReadStream(path, {
+			encoding: "utf8"
+		});
 
 		rs.on("data", data => {
 			var ver = data.split("\n")[2];
@@ -29,7 +33,7 @@ function getServerVer() {
 	return new Promise((resolve, reject) => {
 		//var url = "https://git.tukui.org/elvui/elvui-classic/raw/master/ElvUI/ElvUI.toc";
 		var url =
-			"https://git.tukui.org/elvui/elvui-classic/raw/master/ElvUI/ElvUI.toc";
+			"https://git.tukui.org/elvui/elvui-tbc/-/raw/main/ElvUI/ElvUI-BCC.toc";
 		var options = {
 			url: url
 		};
@@ -57,7 +61,7 @@ function compareResults() {
 			console.log("ElvUI is updating...");
 			// "direct:https://git.tukui.org/elvui/elvui/-/archive/master/elvui-master.zip",
 			dl(
-				"direct:https://git.tukui.org/elvui/elvui-classic/-/archive/master/elvui-classic-master.zip",
+				"direct:https://git.tukui.org/elvui/elvui-tbc/-/archive/main/elvui-tbc-main.zip",
 				"./temp",
 				err => {
 					if (err) {
